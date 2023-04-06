@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col">
+    <h4>{{ isEditing ? "Editar produto" : "Novo produto" }}</h4>
+      <form class="mt-4" [formGroup]="form">
+        <div class="col-12">
+          <mat-form-field appearance="outline">
+            <mat-label>Descrição</mat-label>
+            <input matInput formControlName="description" />
+          </mat-form-field>
+        </div>
+        <div class="col-12">
+          <button
+            mat-stroked-button
+            type="submit"
+            class="mb-2"
+            color="outline"
+            (click)="close()"
+          >
+            Cancelar
+          </button>
+          <button
+            [disabled]="loadingSubmit"
+            mat-raised-button
+            type="submit"
+            color="primary"
+            (click)="saveProduct()"
+          >
+            <div
+              *ngIf="loadingSubmit"
+              class="spinner-border spinner-border-sm me-2"
+              role="status"
+            ></div>
+            {{ loadingSubmit ? "Processando..." : "Salvar" }}
+          </button>
+        </div>
+      </form>
+  </div>
+</div>

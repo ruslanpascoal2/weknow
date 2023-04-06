@@ -1,0 +1,10 @@
+button.mat-raised-button,
+button.mat-stroked-button {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px ) {
+  mat-form-field {
+    width: 400px;
+  }
+}

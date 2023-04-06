@@ -1,0 +1,62 @@
+<div class="row produtos-wrapper">
+  <div class="col-lg-8">
+    <div class="produtos-header">
+      <h2>Produtos</h2>
+      <button mat-raised-button color="primary" (click)="openProductForm()">
+        + Novo produto
+      </button>
+    </div>
+    <div class="produtos-content">
+      <ng-container *ngIf="products.length > 0; else empty">
+        <table class="produtos-table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Descricao</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td>{{ product._id }}</td>
+              <td>{{ product.descricao }}</td>
+              <td class="produtos-table-actions">
+                <a class="me-2">
+                  <mat-icon
+                    title="Editar produto"
+                    (click)="openProductForm(product)"
+                    >edit</mat-icon
+                  >
+                </a>
+                <a class="delete">
+                  <mat-icon title="Excluir produto" (click)="openDeleteConfirmation(product)">delete</mat-icon>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="produtos-list-responsive">
+          <div class="produto-card d-flex flex-column" *ngFor="let product of products">
+            <strong>{{product.descricao}}</strong>
+            <span>{{product._id}}</span>
+            <div class=" produtos-table-actions d-flex justify-content-end mt-3">
+              <a class="me-2">
+                <mat-icon
+                  title="Editar produto"
+                  (click)="openProductForm(product)"
+                  >edit</mat-icon
+                >
+              </a>
+              <a class="delete">
+                <mat-icon title="Excluir produto" (click)="openDeleteConfirmation(product)">delete</mat-icon>
+              </a>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #empty> Não existem produtos. </ng-template>
